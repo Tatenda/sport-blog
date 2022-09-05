@@ -161,7 +161,7 @@ const NewsCardComponent: FC<IProps> = ({ newsCard, filterCards }) => {
                     </div>
                 </div> :
                 <div className={`${cardStyle}`} onClick={loadArticle}>
-                    <div className="w-100 h-100 contents-container px-3" style={setBgImage(newsCard)}>
+                    <div className="w-100 h-100 contents-container px-3" style={setBgImage(newsCard)} onClick={() => alert("Promo Clicked")}>
                         <div className="contents-container__category-image">
                             <img src={
                                 (newsCard as INewsCard).type === ECardType.gallery ?
