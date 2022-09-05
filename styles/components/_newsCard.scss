@@ -1,0 +1,209 @@
+$padding: 48px;
+$category-mens: $primary;
+$category-womens: #82BEE6;
+$category-academy: #7F4807;
+$category-training: #328F89;
+@mixin category($color, $fade) {
+    border-color: $color;
+    color: $color;
+    &:hover {
+        background-color: lighten($color, $fade)
+    }
+}
+
+.stCard {
+    transition: all .5s;
+    min-height: 460px;
+    &:hover {
+        cursor: pointer;
+        opacity: .7;
+        p {
+            text-decoration: underline;
+        }
+    }
+    &--featured {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 24px;
+        &__details {
+            background-color: #fff;
+            opacity: .95;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 480px;
+            z-index: 10;
+            display: grid;
+            grid-template-rows: 20% 60% 20%;
+        }
+        &__category-container {
+            display: grid;
+            place-items: end start;
+            padding-inline-start: $padding;
+        }
+        &__category-title {
+            padding-inline-start: $padding;
+            padding-inline-end: $padding;
+            padding-block-start: $padding;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        &__date {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            padding-inline-start: $padding;
+            font-size: 24px;
+            font-weight: bold;
+            &.svg path {
+                fill: black;
+                color: black;
+            }
+        }
+    }
+    &--article {
+        margin-bottom: 28px;
+        .image-details {
+            height: 260px;
+            overflow: hidden;
+            display: grid;
+            align-self: end;
+            .category-container {
+                padding-block-start: 16px;
+                display: grid;
+                grid-auto-columns: 120px;
+                justify-content: start;
+            }
+            .category-title {
+                font-size: 30px;
+                font-weight: bold;
+                padding-block-start: 25px;
+            }
+            .date {
+                font-size: 18px;
+                font-weight: bold;
+                color: #666666;
+                border-block-end: 1px solid #666666;
+                padding-block-end: 20px;
+            }
+        }
+    }
+    &--gallery,
+    &--video {
+        overflow: hidden;
+        color: #fff;
+        padding-bottom: 28px;
+        .contents-container {
+            display: grid;
+            &__category-image {
+                overflow: hidden;
+                display: grid;
+                align-self: start;
+                place-items: center end;
+                padding-top: 20px;
+            }
+            &__image-details {
+                height: 260px;
+                overflow: hidden;
+                display: grid;
+                align-self: end;
+                .category-container {
+                    padding-block-start: 16px;
+                    display: grid;
+                    grid-auto-columns: 120px;
+                    justify-content: start;
+                    z-index: 1000;
+                }
+                .category-title {
+                    font-size: 30px;
+                    font-weight: bold;
+                    padding-block-start: 25px;
+                    z-index: 1000;
+                }
+                .date {
+                    font-size: 18px;
+                    font-weight: bold;
+                    border-block-end: 1px solid #666666;
+                    padding-block-end: 20px;
+                    z-index: 1000;
+                }
+            }
+        }
+    }
+    &--promo {
+        height: 100%;
+        display: grid;
+        &__image {
+            display: grid;
+            place-items: center;
+        }
+        &__small-text {
+            display: grid;
+            place-items: center;
+            p {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+        }
+        &__large-text {
+            display: grid;
+            place-items: center;
+            color: white;
+            h2 {
+                font-size: 48px;
+                text-align: center;
+            }
+        }
+        &__button-container {
+            display: grid;
+            place-items: center;
+        }
+        &__button {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__contents-container {
+        display: grid;
+    }
+}
+
+.category {
+    border: 2px solid;
+    padding: 10px 20px;
+    font-weight: 500;
+    display: grid;
+    place-items: center;
+    &:hover {
+        cursor: pointer;
+    }
+    &--mens {
+        @include category($category-mens, 55)
+    }
+    &--womens {
+        @include category($category-womens, 25)
+    }
+    &--academy {
+        @include category($category-academy, 65);
+    }
+    &--training {
+        @include category($category-training, 55)
+    }
+    &--white {
+        @include category(white, 55)
+    }
+}
+
+@media (max-width: 480px) {
+    .stCard {
+        &--promo {
+            margin-bottom: 30px;
+        }
+    }
+}

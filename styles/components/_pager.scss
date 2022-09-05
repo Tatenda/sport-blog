@@ -1,0 +1,32 @@
+.pager {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto;
+    &__page-number {
+        display: inline-block;
+        padding: 20px;
+        &--selected {
+            color: $primary;
+            font-weight: bold;
+        }
+        &--disabled {
+            color: rgb(159, 158, 158);
+            cursor: not-allowed;
+        }
+    }
+    &__arrow {
+        display: inline-block;
+        padding: 20px;
+        &--left {
+            transform: rotate(-180deg);
+        }
+        &--disabled {
+            opacity: .3;
+            cursor: not-allowed;
+        }
+    }
+}
